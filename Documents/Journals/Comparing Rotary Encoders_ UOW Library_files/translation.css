@@ -1,0 +1,1 @@
+.ft-translation #translateOriginal{display:none}.ft-translation.translated #translateOriginal{display:inline}.translationProgressBar{position:relative;width:200px;height:20px;border:solid 1px black}.translationProgressBar>div{position:absolute;width:0;height:100%;background-color:blue}

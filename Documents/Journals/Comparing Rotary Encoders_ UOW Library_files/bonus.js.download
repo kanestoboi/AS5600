@@ -1,0 +1,31 @@
+// JavaScript Document
+
+var showCount=1;
+
+function SearchBonus(bonusTitle,showNo){
+	showCount=showNo;
+	jQuery('a[title="'+bonusTitle+'"]').each(function(){
+				// enter external link info here
+				var thisLink = this;
+				var linkHref =jQuery(thisLink).attr('href');
+				for(i=0;i<3;i++){
+					linkHref = decodeURIComponent(linkHref);
+				}			
+				linkANPos = linkHref.indexOf('search/i?')+9; // extract ISBN
+				linkHref = linkHref.substring(linkANPos);
+	
+				jQuery(thisLink).fadeTo("slow",.30);
+				jQuery.getJSON('https://widgets-ebscohost-com.ezproxy.uow.edu.au/prod/customerspecific/s1145751/apps/customlink/bonus/bonus.php?callback=?', {'i':linkHref}, function(data){UpdateSearchBonus(data,thisLink);}).complete(function() {});
+	});
+}
+
+function UpdateSearchBonus(data,selectorItem){
+	if(data.resultCount==0){
+		jQuery(selectorItem).parent().fadeOut();
+	}else{
+		var selectorHTML = jQuery(selectorItem).html();
+		if(showCount==1){ selectorHTML = selectorHTML + "("+data.resultCount+")";}
+		jQuery(selectorItem).html(selectorHTML);
+		jQuery(selectorItem).fadeTo("slow",1);
+	}
+}

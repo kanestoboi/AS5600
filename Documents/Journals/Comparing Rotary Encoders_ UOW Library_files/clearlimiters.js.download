@@ -1,0 +1,69 @@
+// Use by placing the below link
+//<script id="ClearLimiters-app" data-e="1" data-t="Click here to remove all limits and search again" src="http://gss.ebscohost.com.ezproxy.uow.edu.au/prod/search/clearlimiters/clearlimiters.js"></script>
+(function () {
+    "use strict"; // optional
+    
+    //init variables to load App
+    var initClearLimiters = 0;
+    var trackClearLimiters = setInterval(function () { if (window.jQuery) { clearInterval(trackClearLimiters); StartClearLimiters(); } }, 10);
+
+    function StartClearLimiters() {
+        if (initClearLimiters === 1) { return; } else { initClearLimiters = 1; }
+
+        var clearMessage = jQuery('#ClearLimiters-app').data('t');
+        var enableExpanders = jQuery('#ClearLimiters-app').data('e');
+		if(enableExpanders===undefined){enableExpanders=1};
+
+		if (jQuery(".std-warning-text").text() == "No results were found.") {
+		    if (AreLimitsEnabled() == true) {
+		        jQuery(".std-warning-text").append('&nbsp;<a class="app-clearlimiters" href="javascript:ClearAllLimitersandSearch(\'' + enableExpanders + '\')"> ' + clearMessage + '</a>');
+		    } else {
+		        var newSearch = jQuery('a[title="New Search"]').clone();
+		        jQuery(newSearch).removeClass('color-s1');
+		        jQuery(newSearch).text('Click here to start a new search.');
+		        jQuery(".std-warning-text").append('&nbsp;');
+		        jQuery(".std-warning-text").append(newSearch);
+		    }
+        }
+    }
+}());
+
+function ClearAllLimitersandSearch(enableExpanders) {
+    jQuery("#limiterExpanderControl select").val(jQuery("select option:first").val());
+    jQuery('#limiterExpanderControl input[type="checkbox"]').each(function () {
+        var currentItem = this;
+        if (jQuery(currentItem).attr('id').indexOf('expand')==-1){  // ignore expanders
+            jQuery(currentItem).prop('checked', false);
+        }
+    });
+    jQuery('#limiterExpanderControl input[type="text"]').val('');
+    if (enableExpanders == 1) { EnableAllExpanders(); }
+    jQuery('#limiterExpanderControl input[title="Search"]:not(#SearchButton)').trigger('click');
+}
+
+function EnableAllExpanders(){
+	jQuery('#expand_thesaurus').prop('checked', true);
+	jQuery('#expand_fulltext').prop('checked', true);
+	jQuery('#expand_enhancedsubjectprecision').prop('checked', true);
+}
+
+function AreLimitsEnabled() {
+    var limitersAreSet = 0;
+    jQuery('#limiterExpanderControl input[type="checkbox"]').each(function () {
+        var currentInput = this;
+		if(jQuery(currentInput).attr('id').indexOf('expand_')==-1){
+        	if (jQuery(currentInput).prop('checked') == true) { limitersAreSet = 1; }
+		}
+    });
+    jQuery("#limiterExpanderControl select").each(function () {
+        var currentSelect = this;
+        if (jQuery(currentSelect).val() != '') { limitersAreSet = 1; }
+    });
+    jQuery('#limiterExpanderControl input[type="text"]').each(function () {
+        var currentText = this;
+        if (jQuery(currentText).val() != '') { limitersAreSet = 1; }
+    });
+
+    return (limitersAreSet == 1) ? true : false;
+
+}

@@ -1,0 +1,350 @@
+//document.domain = "ebscohost.com";
+var RTACOrder = [
+"W'Gong Level 1",
+"W'Gong Level 1 Large Items",
+"W'Gong Level 1 Extra Large Items",
+"W'Gong Law Lending",
+"W'Gong Level 1 One Week Loan",
+"W'Gong Level 1 Large Items One Week Loan",
+"W'Gong Law One Week Loan",
+"W'Gong Short Loans",
+"W'Gong Archives",
+"W'Gong Theses",
+"W'Gong Rare Books",
+"W'Gong Archives Manuscripts",
+"W'Gong Law Reference",
+"W'Gong Leisure Reading",
+"W'Gong See the World Collection",
+"W'Gong Level 2 Compactus",
+"W'Gong Level 2 ABS",
+"Main Media Branch",
+"W'Gong Media Microform",
+"W'Gong Media Miniscores",
+"W'Gong Media Large Scores",
+"W'Gong Media Maps",
+"W'Gong Media Scores",
+"W'Gong Media Music CD",
+"W'Gong Media Newspapers",
+"W'Gong Media Compactus Scores",
+"W'Gong Media Compactus Miniscores",
+"W'Gong Media Compactus Vinyls",
+"Storage",
+"W'Gong Law Primary",
+"W'Gong Level 2 Journals",
+"W'Gong Info Desk",
+"W'Gong Research Help Desk",
+"CRC Lending",
+"CRC Junior Fiction",
+"CRC One Week Loan",
+"CRC Short Loans",
+"CRC Reference",
+"CRC Journals",
+"Sydney Business School Lending",
+"Sydney Business School Short Loans",
+"Sydney Business School Reference",
+"Sydney Business School Leisure Reading",
+"Shoalhaven Lending",
+"Shoalhaven One Week Loan",
+"Shoalhaven Short Loans",
+"Shoalhaven CRC",
+"Shoalhaven Reference",
+"Shoalhaven Leisure Reading",
+"Shoalhaven Newspapers",
+"Batemans Bay Lending",
+"Batemans Bay One Week Loan",
+"Batemans Bay Short Loans",
+"Batemans Bay CRC",
+"Batemans Bay Reference",
+"Bega Lending",
+"Bega One Week Loan",
+"Bega Short Loans",
+"Bega CRC",
+"Bega Reference",
+"Moss Vale Lending",
+"Moss Vale One Week Loan",
+"Moss Vale Short Loans",
+"Moss Vale CRC",
+"Moss Vale Reference",
+"Loftus Lending",
+"Loftus One Week Loan",
+"Loftus Short Loans",
+"Loftus Reference"
+];
+
+var trackCall = setInterval(function () {
+    if (window.jQuery) {
+        clearInterval(trackCall);
+        CustomEDS();
+    }
+}
+, 10);
+
+var calledRTAC=0;
+function CustomEDS() {
+	if(jQuery('body').data('customeds')==1){return;}
+	else { jQuery('body').attr('data-customeds', '1'); }
+
+		
+	jQuery.getScript('http://widgets.ebscohost.com.ezproxy.uow.edu.au/prod/customerspecific/s1145751/apps/customlink/bonus/bonus.js', function (data, textStatus, jqxhr) { SearchBonus('Search Bonus', 0); });
+
+	//jQuery('.guest-login').css('display', 'none');// Remove guest access toolbar.
+	jQuery('.limCaption a:contains(All Providers)').text('All Databases');
+    
+    //Move disciplines under search options
+	jQuery('#disciplines').appendTo('.limiters');
+	//Set Search History text when open
+	jQuery('#history').text("Show Search History");
+	jQuery('.search-history-on').text("Hide Search History");
+	
+	//Change folder icon title.
+	jQuery('a[name="addToFolder"]').attr('title','To print, e-mail, or add to folder');
+	
+	//Add Folders to Share>
+	jQuery('ul[aria-labelledby="addToFolderHeader"]').append('<li role="menuitem" class="go-to-folder"><a id="GoToFolder" title="Go To folder" class="link add-all-side" href="'+jQuery('#lnkFolder').attr('href')+'">Go to folder</a></li>');
+	
+	if(document.URL.indexOf("/basic?")>-1){
+		jQuery('.logo-img').css('margin-top','60px');
+	}else{
+		jQuery('.logo-img').css('margin-top','45px');
+	}    
+    
+    //move widget up
+    if( document.URL.indexOf("/advanced?")>-1 && jQuery(".std-warning-text").text().indexOf("No results were found") > -1){
+        jQuery("#content").prepend(jQuery("#frameWidget")); 
+    } else {
+        jQuery('.custom-widget[data-key="Need Help"]').css('display', 'none');
+    }
+    
+	if(document.URL.indexOf("/detail?")>-1){
+		if(jQuery('dt:contains("Online Access")').next().find('a').html()!=null)
+		jQuery('span[title="Detailed Record"]').parent().append('<li><span class="record-type format-citation" style="background-image: url(\'https://imageserver.ebscohost.com/branding/s2951849/ebookicon.jpg\'); background-position: 0 0;">'
+		+'<a href="'+jQuery('dt:contains("Online Access")').next().find('a').attr('href')+'" target="_blank">'+jQuery('dt:contains("Online Access")').next().find('a').html()+'</a>'
+		+'</span></li>');	
+	}
+	
+	jQuery( document ).ajaxComplete(function( event, xhr, settings ) {
+		//console.log('ajaxComplete');
+		DisplayFolderView();
+		if (calledRTAC < 2) CheckRTAC(); else { calledRTAC++; }
+		if (settings.url.indexOf('ExpandedPanel') > -1) {
+		    jQuery('.limCaption a:contains(All Providers)').text('All Databases');
+		}
+	});
+	
+	DisplayFolderView();
+	
+//	jQuery('a img[src="http://www.library.uow.edu.au/content/groups/public/@web/@lib/documents/mm/uow040334.gif"]').parent().attr('target','_self');
+//	jQuery('a[title="Search Bonus"]').attr('target','_self');
+	jQuery('.custom-link a').attr('target', '_self');
+
+    //StyleUoW();
+	EBooksHelp();
+	//NoResultsHelp();
+	
+}
+//SetDocumentDomain();
+//AppMathJax();
+AppFTorAiLC();
+AppLightBox();
+AppCatLimiter();
+AppClearLimiters();
+AppPubByRadio();
+//AppAutoCiteResolve();
+//AppLivePreview();
+
+
+function AppLightBox() {
+    var script = document.createElement('script');
+    script.setAttribute('id', 'lbwidget');
+    script.type = 'text/javascript';
+    script.src = 'https://widgets-ebscohost-com.ezproxy.uow.edu.au/prod/customerspecific/s2951849/lightbox.js';
+    script.setAttribute('data-select', 'a%5Btitle%3D%22View+in+Catalogue%2FPlace+Hold%22%5D');
+    script.setAttribute('data-dim', '90,90');
+    document.body.appendChild(script);
+}
+
+function AppCatLimiter() {
+    var script = document.createElement('script');
+    script.setAttribute('class', 'CatLimiter-app');
+    script.type = 'text/javascript';
+    script.src = 'http://gss.ebscohost.com.ezproxy.uow.edu.au/prod/search/catlimiter/catlimiter.js';
+    script.setAttribute('data-p', '2');
+    document.body.appendChild(script);
+}
+
+function AppClearLimiters() {
+    var script = document.createElement('script');
+    script.setAttribute('id', 'ClearLimiters-app');
+    script.type = 'text/javascript';
+    script.src = 'http://gss.ebscohost.com.ezproxy.uow.edu.au/prod/search/clearlimiters/clearlimiters.js';
+    script.setAttribute('data-t', 'Click here to remove all limits and search again.');
+    document.body.appendChild(script);
+}
+
+function AppFTorAiLC() {
+    var script = document.createElement('script');
+    script.setAttribute('class', 'FTorAiLC-app');
+    script.type = 'text/javascript';
+    script.src = 'http://gss.ebscohost.com.ezproxy.uow.edu.au/prod/search/ftorailc/ftorailc.js';
+    document.body.appendChild(script);
+}
+
+
+function AppPubByRadio() {
+    var script = document.createElement('script');
+    script.setAttribute('id', 'pubtypesearch-app');
+    script.setAttribute('data-p', '%7B%22type%22%3A%5B%7B%22label%22%3A%22All+Resources%22%2C%22pt%22%3A%22+%22%2C%22d%22%3Atrue%7D%2C%7B%22label%22%3A%22Journal+articles%22%2C%22pt%22%3A%22+AND+PT+%28academic+journal%29%22%2C%22d%22%3Afalse%7D%2C%7B%22label%22%3A%22Books+%26+eBooks%22%2C%22pt%22%3A%22+AND+%28PT+ebook+OR+PT+book%29%22%2C%22d%22%3Afalse%7D%5D%7D');
+    script.type = 'text/javascript';
+    script.src = 'https://widgets-ebscohost-com.ezproxy.uow.edu.au/prod/simplekey/pubtypesearch/pubtypesearch.js';
+    document.body.appendChild(script);
+
+}
+
+function AppLivePreview() {
+    var script = document.createElement('script');
+    script.setAttribute('class', 'livepreview-app');
+    script.setAttribute('data-p', 'Find@UOW,blue');
+    script.type = 'text/javascript';
+    script.src = '//gss.ebscohost.com/prod/customlink/livepreview/livepreview.js';
+    document.body.appendChild(script);
+}
+
+function AppMathJax() {
+    var script = document.createElement('script');
+    script.setAttribute('id', 'mathjax-app');
+    script.setAttribute('async', 'true');
+    script.type = 'text/javascript';
+    script.src = '//gss.ebscohost.com/prod/simplekey/mathjax/mathjax.js';
+    document.body.appendChild(script);
+    //<script id="mathjax-app" async="true" src="//gss.ebscohost.com/prod/simplekey/mathjax/mathjax.js"></script>
+
+}
+
+function AppAutoCiteResolve() {
+    var script = document.createElement('script');
+    script.setAttribute('id', 'autociteresolver-app');
+    script.type = 'text/javascript';
+    script.src = '//gss.ebscohost.com/prod/simplekey/autociteresolver/autociteresolver.js';
+    document.body.appendChild(script);
+    //<script id="autociteresolver-app"  src="//gss.ebscohost.com/prod/simplekey/autociteresolver/autociteresolver.js"></script>
+}
+
+
+function CheckRTAC(){
+	//console.log('checkRTAC called');
+	calledRTAC++;	
+	jQuery('.rtac-table').each(function(){
+
+		for(var rtacItem=RTACOrder.length;rtacItem>=0;rtacItem--){
+			var that = this;				
+			jQuery('tbody tr:contains('+RTACOrder[rtacItem]+')',that).each(function(){
+				if(rtacItem==0){
+					jQuery('.sel-rtac-first',that).css('display','none');
+					jQuery('.sel-rtac-first',that).removeAttr('class');
+					jQuery(this).attr("class","sel-rtac-first");			
+					jQuery(this).removeAttr("style");			
+				}
+				jQuery(this).prependTo(jQuery(this).parent());
+				if(RTACOrder[rtacItem].indexOf('W\'Gong Level')>-1){
+					if(jQuery(this).find('.status').text().indexOf('IN LIBRARY')>-1){ // hide if not due.
+						jQuery(that).parent().parent().parent().find("a[title='Search Bonus']").parent().css('display','none');		
+					}
+					if(document.URL.indexOf("/detail?")>-1){
+						jQuery("a[title='Search Bonus']").parent().parent().css('display','none');
+					}
+				}					
+				if(RTACOrder[rtacItem].indexOf('W\'Gong Lending')>-1){
+					if(jQuery(this).find('.status').text().indexOf('IN LIBRARY')>-1){ // hide if not due.
+						jQuery(that).parent().parent().parent().find("a[title='Search Bonus']").parent().css('display','none');		
+					}
+					if(document.URL.indexOf("/detail?")>-1){
+						jQuery("a[title='Search Bonus']").parent().parent().css('display','none');
+					}
+				}					
+			});
+		}
+	});	
+}
+
+function DisplayFolderView(){
+	if((document.URL.indexOf("/results?")>-1) || (document.URL.indexOf("/resultsadvanced?")>-1) ){
+		  ep.messages.folderHasItemsTitle="My Folder has Items";
+		  ep.messages.folderHasNoItemsTitle="My Folder is empty";
+		  
+		  var myFolderInfo = '<div class="TempFolderHolder">\
+								<h2 class="folderItems-header">'+ep.messages.folderHasNoItemsTitle+'</h2>\
+								<div class="folderItems-content">\
+								</div>\
+							<div id="ctl01_folderGoTo" class="medium-normal gotoFolder"><span id="ctl01_lblFolderViewGoTo">Go to: </span><a id="ctl01_lnkFolderView" title="Folder View" href="javascript:__doPostBack(\'_GoToFolderLink\')">Folder View</a></div>\
+							</div>';
+			if((jQuery('#folderItemsContainerControl .folderItems-container').length==0) && (jQuery('#folderItemsContainerControl .TempFolderHolder').length==0 )){				
+				jQuery('#folderItemsContainerControl').append(myFolderInfo);
+			}else{
+				if(jQuery('#folderItemsContainerControl .folderItems-container').length!=0){
+					jQuery('#folderItemsContainerControl .TempFolderHolder').remove();
+					jQuery('#folderItemsContainerControl .folderItems-header').text(ep.messages.folderHasItemsTitle);
+				}
+			}
+	}
+}
+
+
+
+function DisplayMe(blocks,id){
+	//basic,advanced,detailed,results,resultsadvanced
+	var displayBlocks = blocks.split(",")
+	for(i=0;i<displayBlocks.length;i++){
+		if(document.URL.indexOf("/"+displayBlocks[i]+"?")>-1){
+			document.getElementById(id).style.display="block";
+		}
+	}
+}
+
+function StyleUoW() {
+    jQuery('head').append('<style>\
+        span.custom-link{\
+            border: 0px solid #6B6B6B;\
+            padding: 3px!important;\
+            margin: 3px!important;\
+            background-color: #008bc0;\
+        }\
+        span.custom-link a{\
+            color:#FFF;\
+        }\
+    </style>');
+}
+
+function SetDocumentDomain() {
+    var shortHost = window.location.hostname.split('.')
+    try {
+        document.domain = shortHost[shortHost.length - 2] + '.' + shortHost[shortHost.length - 1];
+    } catch (err) {
+        if (err.toString().indexOf('top-level domain') > -1) {
+            document.domain = shortHost[shortHost.length - 3] + '.' + shortHost[shortHost.length - 2] + '.' + shortHost[shortHost.length - 1];
+        }
+    }
+}
+
+function EBooksHelp() {
+    var hideEbookWidget = 1;
+    jQuery('.caption').each(function () { if (jQuery(this).text() == 'eBook') hideEbookWidget = 0; });
+    if (hideEbookWidget) {
+        jQuery('.related-info-area:contains(\"EBOOK HELP\")').css('display', 'none');
+    }
+}
+
+/*
+function NoResultsHelp() {
+    if (jQuery(".std-warning-text").text().indexOf("No results were found") > -1)  {
+        jQuery('#customHolder').append('<iframe id="noresultsWidget" src="//' + window.location.hostname + '/eds/ImportWidget/ImportWidgetContent?wdgtId=295669&sid=' + QueryString("sid") + '" width="100%" height="275" allowtransparency="true" frameborder="0" scrolling="no"></iframe>'); 
+    } else {
+        jQuery('.custom-widget[data-key="Need Help"]').css('display', 'none');
+    }
+} */
+
+function QueryString(key) {
+    var re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
+    var r = [], m;
+    while ((m = re.exec(document.location.search)) != null) r.push(m[1]);
+    return r;
+}

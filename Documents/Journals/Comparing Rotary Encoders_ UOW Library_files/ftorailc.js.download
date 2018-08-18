@@ -1,0 +1,38 @@
+// Use by placing the below link
+//<script id="FTorAiLC-app" src="http://gss.ebscohost.com.ezproxy.uow.edu.au/prod/search/ftorailc/ftorailc.js"></script>
+(function () {
+    "use strict"; // optional
+    
+    //init variables to load App
+    var initFTorAiLC = 0;
+    var initFTorAiLCFixedHeight = 1;
+    var trackFTorAiLC = setInterval(function () { if (window.jQuery) { clearInterval(trackFTorAiLC); StartFTorAiLC(); } }, 10);
+
+
+    function StartFTorAiLC() {
+        if (initFTorAiLC === 1) { return; } else { initFTorAiLC = 1; }
+    
+		jQuery('#common_FT').on('click',function(){
+			jQuery('#common_FT1').prop('checked',false);
+		});
+		
+		jQuery('#common_FT1').on('click',function(){
+			jQuery('#common_FT').prop('checked',false);
+		});
+		//Links next to checkboxes
+		jQuery('label[for="common_FT"] a').unbind('click');
+		jQuery('label[for="common_FT"]').on('click',function(){	
+			
+			jQuery('#common_FT1').prop('checked',false);
+			jQuery('#common_FT').trigger('click');
+		});
+		
+		jQuery('label[for="common_FT1"]  a').unbind('click');
+		jQuery('label[for="common_FT1"]').on('click',function(){
+			jQuery('#common_FT').prop('checked',false);
+			jQuery('#common_FT1').trigger('click');
+		});
+
+    }
+
+}());

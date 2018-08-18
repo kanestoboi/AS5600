@@ -1,0 +1,1 @@
+﻿(function(a){a.fn.scrollTo=function(){return this.each(function(){var b=a(this).offset();window.scrollTo(b.left,b.top);});};})(jQuery);
