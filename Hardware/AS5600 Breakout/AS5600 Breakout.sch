@@ -59,17 +59,6 @@ F 3 "" H 5350 3750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x08 J1
-U 1 1 5B777435
-P 5450 2400
-F 0 "J1" H 5450 2800 50  0000 C CNN
-F 1 "Conn_01x08" V 5550 2400 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Angled_1x08_Pitch2.54mm" H 5450 2400 50  0001 C CNN
-F 3 "" H 5450 2400 50  0001 C CNN
-	1    5450 2400
-	0    -1   -1   0   
-$EndComp
-$Comp
 L C C2
 U 1 1 5B7775CB
 P 4900 3400
@@ -257,4 +246,15 @@ Wire Wire Line
 	6400 4150 6400 4200
 Wire Wire Line
 	6400 3300 6400 3350
+$Comp
+L Conn_01x07 J1
+U 1 1 5B78A669
+P 5450 2400
+F 0 "J1" V 5550 2750 50  0000 C CNN
+F 1 "Conn_01x07" V 5550 2250 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x07_Pitch2.54mm" H 5450 2400 50  0001 C CNN
+F 3 "" H 5450 2400 50  0001 C CNN
+	1    5450 2400
+	0    1    -1   0   
+$EndComp
 $EndSCHEMATC

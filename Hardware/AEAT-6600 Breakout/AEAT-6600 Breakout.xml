@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>C:\Users\kanes\Documents\Projects\ECTE451\Hardware\AEAT-6600 Breakout\AEAT-6600 Breakout.sch</source>
-    <date>18/08/2018 6:35:50 PM</date>
+    <date>19/08/2018 10:19:32 AM</date>
     <tool>Eeschema 4.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -22,6 +22,11 @@
     <comp ref="C2">
       <value>100nF</value>
       <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">1276-1007-1-ND</field>
+        <field name="Cost Each">0.064</field>
+      </fields>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77B526</tstamp>
@@ -43,6 +48,11 @@
     <comp ref="C1">
       <value>10uF</value>
       <footprint>Capacitors_SMD:C_0805</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">1276-1096-1-ND</field>
+        <field name="Cost Each">0.166</field>
+      </fields>
       <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77BA74</tstamp>
@@ -62,7 +72,7 @@
       <tstamp>5B77BD85</tstamp>
     </comp>
     <comp ref="R3">
-      <value>47</value>
+      <value>47k</value>
       <footprint>Resistors_SMD:R_0805</footprint>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
@@ -71,6 +81,11 @@
     <comp ref="J1">
       <value>Conn_01x07</value>
       <footprint>Pin_Headers:Pin_Header_Angled_1x07_Pitch2.54mm</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">732-5342-ND</field>
+        <field name="Cost Each">1.047</field>
+      </fields>
       <libsource lib="conn" part="Conn_01x07"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77C0E9</tstamp>
@@ -78,6 +93,11 @@
     <comp ref="J2">
       <value>Conn_01x09</value>
       <footprint>Pin_Headers:Pin_Header_Angled_1x09_Pitch2.54mm</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">732-5342-ND</field>
+        <field name="Cost Each">1.047</field>
+      </fields>
       <libsource lib="conn" part="Conn_01x09"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77C16A</tstamp>
@@ -85,6 +105,11 @@
     <comp ref="R4">
       <value>47k</value>
       <footprint>Resistors_SMD:R_0805</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">311-47.0KCRCT-ND</field>
+        <field name="Cost Each">0.056</field>
+      </fields>
       <libsource lib="device" part="R"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77C9AF</tstamp>
@@ -99,6 +124,11 @@
     <comp ref="D1">
       <value>LED</value>
       <footprint>LEDs:LED_0603</footprint>
+      <fields>
+        <field name="Supplier">Digikey</field>
+        <field name="Supplier Part Number">475-3118-1-ND</field>
+        <field name="Cost Each">0.437</field>
+      </fields>
       <libsource lib="device" part="LED"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5B77CDA3</tstamp>
@@ -253,93 +283,93 @@
   <nets>
     <net code="1" name="PROG">
       <node ref="R2" pin="1"/>
-      <node ref="J1" pin="2"/>
       <node ref="U1" pin="13"/>
+      <node ref="J1" pin="6"/>
     </net>
     <net code="2" name="PWRDOWN">
-      <node ref="U1" pin="11"/>
       <node ref="R3" pin="1"/>
-      <node ref="J1" pin="1"/>
+      <node ref="U1" pin="11"/>
+      <node ref="J1" pin="7"/>
     </net>
     <net code="3" name="ALIGN">
-      <node ref="J1" pin="3"/>
-      <node ref="R1" pin="1"/>
       <node ref="U1" pin="7"/>
-    </net>
-    <net code="4" name="NCS">
-      <node ref="U1" pin="14"/>
-      <node ref="J2" pin="9"/>
-    </net>
-    <net code="5" name="CLK">
-      <node ref="U1" pin="15"/>
-      <node ref="J2" pin="8"/>
-    </net>
-    <net code="6" name="PWM">
-      <node ref="J2" pin="3"/>
-      <node ref="U1" pin="8"/>
-    </net>
-    <net code="7" name="DO/DI">
-      <node ref="J2" pin="7"/>
-      <node ref="U1" pin="16"/>
-    </net>
-    <net code="8" name="Net-(D1-Pad1)">
-      <node ref="R4" pin="1"/>
-      <node ref="D1" pin="1"/>
-    </net>
-    <net code="9" name="MAGLO">
-      <node ref="J2" pin="2"/>
-      <node ref="D2" pin="2"/>
-      <node ref="U1" pin="5"/>
-    </net>
-    <net code="10" name="MAGHI">
-      <node ref="U1" pin="4"/>
-      <node ref="J2" pin="1"/>
-      <node ref="D1" pin="2"/>
-    </net>
-    <net code="11" name="Net-(D2-Pad1)">
-      <node ref="D2" pin="1"/>
-      <node ref="R5" pin="1"/>
-    </net>
-    <net code="12" name="GND">
-      <node ref="R3" pin="2"/>
-      <node ref="C1" pin="2"/>
-      <node ref="C2" pin="2"/>
-      <node ref="U1" pin="6"/>
-      <node ref="C3" pin="2"/>
-      <node ref="C4" pin="1"/>
-      <node ref="R1" pin="2"/>
-      <node ref="R2" pin="2"/>
-      <node ref="R4" pin="2"/>
-      <node ref="R5" pin="2"/>
+      <node ref="R1" pin="1"/>
       <node ref="J1" pin="5"/>
     </net>
-    <net code="13" name="6.5V">
-      <node ref="U1" pin="12"/>
-      <node ref="J1" pin="4"/>
-      <node ref="C4" pin="2"/>
+    <net code="4" name="NCS">
+      <node ref="J2" pin="1"/>
+      <node ref="U1" pin="14"/>
     </net>
-    <net code="14" name="A/U">
+    <net code="5" name="CLK">
+      <node ref="J2" pin="2"/>
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="6" name="PWM">
+      <node ref="U1" pin="8"/>
+      <node ref="J2" pin="7"/>
+    </net>
+    <net code="7" name="DO/DI">
+      <node ref="U1" pin="16"/>
+      <node ref="J2" pin="3"/>
+    </net>
+    <net code="8" name="MAGHI">
+      <node ref="U1" pin="4"/>
+      <node ref="J2" pin="9"/>
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="9" name="MAGLO">
+      <node ref="D2" pin="2"/>
+      <node ref="U1" pin="5"/>
+      <node ref="J2" pin="8"/>
+    </net>
+    <net code="10" name="Net-(D1-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="11" name="Net-(D2-Pad1)">
+      <node ref="R5" pin="1"/>
+      <node ref="D2" pin="1"/>
+    </net>
+    <net code="12" name="GND">
+      <node ref="R5" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="R4" pin="2"/>
+      <node ref="R2" pin="2"/>
+      <node ref="R1" pin="2"/>
+      <node ref="R3" pin="2"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C4" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="J1" pin="3"/>
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="13" name="A/U">
+      <node ref="J2" pin="4"/>
       <node ref="U1" pin="1"/>
+    </net>
+    <net code="14" name="B/V">
+      <node ref="J2" pin="5"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="15" name="I/W">
+      <node ref="U1" pin="3"/>
       <node ref="J2" pin="6"/>
     </net>
-    <net code="15" name="B/V">
-      <node ref="U1" pin="2"/>
-      <node ref="J2" pin="5"/>
+    <net code="16" name="6.5V">
+      <node ref="U1" pin="12"/>
+      <node ref="C4" pin="2"/>
+      <node ref="J1" pin="4"/>
     </net>
-    <net code="16" name="I/W">
-      <node ref="J2" pin="4"/>
-      <node ref="U1" pin="3"/>
-    </net>
-    <net code="17" name="5V">
-      <node ref="U1" pin="9"/>
-      <node ref="J1" pin="7"/>
-      <node ref="C2" pin="1"/>
-      <node ref="C1" pin="1"/>
-    </net>
-    <net code="18" name="VDD_F">
+    <net code="17" name="VDD_F">
       <node ref="U1" pin="10"/>
-      <node ref="J1" pin="6"/>
+      <node ref="J1" pin="2"/>
       <node ref="C3" pin="1"/>
+    </net>
+    <net code="18" name="5V">
+      <node ref="U1" pin="9"/>
+      <node ref="C2" pin="1"/>
+      <node ref="J1" pin="1"/>
+      <node ref="C1" pin="1"/>
     </net>
   </nets>
 </export>

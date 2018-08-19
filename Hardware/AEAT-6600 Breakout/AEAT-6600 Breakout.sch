@@ -55,7 +55,9 @@ F 0 "C2" H 5925 2300 50  0000 L CNN
 F 1 "100nF" H 5925 2100 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0805" H 5938 2050 50  0001 C CNN
 F 3 "" H 5900 2200 50  0001 C CNN
-F 4 "RRRR" H 5900 2200 60  0001 C CNN "Supplier"
+F 4 "Digikey" H 5900 2200 60  0001 C CNN "Supplier"
+F 5 "1276-1007-1-ND" H 5900 2200 60  0001 C CNN "Supplier Part Number"
+F 6 "0.064" H 5900 2200 60  0001 C CNN "Cost Each"
 	1    5900 2200
 	1    0    0    -1  
 $EndComp
@@ -111,6 +113,9 @@ F 0 "C1" H 5675 2300 50  0000 L CNN
 F 1 "10uF" H 5675 2100 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0805" H 5688 2050 50  0001 C CNN
 F 3 "" H 5650 2200 50  0001 C CNN
+F 4 "Digikey" H 5650 2200 60  0001 C CNN "Supplier"
+F 5 "1276-1096-1-ND" H 5650 2200 60  0001 C CNN "Supplier Part Number"
+F 6 "0.166" H 5650 2200 60  0001 C CNN "Cost Each"
 	1    5650 2200
 	1    0    0    -1  
 $EndComp
@@ -147,7 +152,7 @@ L R R3
 U 1 1 5B77BDBB
 P 6300 4300
 F 0 "R3" V 6380 4300 50  0000 C CNN
-F 1 "47" V 6300 4300 50  0000 C CNN
+F 1 "47k" V 6300 4300 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 6230 4300 50  0001 C CNN
 F 3 "" H 6300 4300 50  0001 C CNN
 	1    6300 4300
@@ -188,35 +193,35 @@ Text GLabel 8550 3750 2    45   Input ~ 0
 MAGHI
 Text GLabel 8550 3850 2    45   Input ~ 0
 MAGLO
-Text GLabel 3200 1900 2    45   Input ~ 0
+Text GLabel 3200 2500 2    45   Input ~ 0
 5V
-Text GLabel 3200 2000 2    45   Input ~ 0
+Text GLabel 3200 2400 2    45   Input ~ 0
 VDD_F
 Text GLabel 3200 2200 2    45   Input ~ 0
 6.5V
-Text GLabel 3200 2300 2    45   Input ~ 0
+Text GLabel 3200 2100 2    45   Input ~ 0
 ALIGN
-Text GLabel 3200 2400 2    45   Input ~ 0
+Text GLabel 3200 2000 2    45   Input ~ 0
 PROG
-Text GLabel 3200 2500 2    45   Input ~ 0
+Text GLabel 3200 1900 2    45   Input ~ 0
 PWRDOWN
-Text GLabel 3200 2800 2    45   Input ~ 0
+Text GLabel 3200 3600 2    45   Input ~ 0
 NCS
-Text GLabel 3200 2900 2    45   Input ~ 0
+Text GLabel 3200 3500 2    45   Input ~ 0
 CLK
-Text GLabel 3200 3000 2    45   Input ~ 0
+Text GLabel 3200 3400 2    45   Input ~ 0
 DO/DI
-Text GLabel 3200 3100 2    45   Input ~ 0
+Text GLabel 3200 3300 2    45   Input ~ 0
 A/U
 Text GLabel 3200 3200 2    45   Input ~ 0
 B/V
-Text GLabel 3200 3300 2    45   Input ~ 0
+Text GLabel 3200 3100 2    45   Input ~ 0
 I/W
-Text GLabel 3200 3400 2    45   Input ~ 0
+Text GLabel 3200 3000 2    45   Input ~ 0
 PWM
-Text GLabel 3200 3600 2    45   Input ~ 0
+Text GLabel 3200 2800 2    45   Input ~ 0
 MAGHI
-Text GLabel 3200 3500 2    45   Input ~ 0
+Text GLabel 3200 2900 2    45   Input ~ 0
 MAGLO
 $Comp
 L Conn_01x07 J1
@@ -226,6 +231,9 @@ F 0 "J1" H 2700 2600 50  0000 C CNN
 F 1 "Conn_01x07" H 3050 2200 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Angled_1x07_Pitch2.54mm" H 2700 2200 50  0001 C CNN
 F 3 "" H 2700 2200 50  0001 C CNN
+F 4 "Digikey" H 2700 2200 60  0001 C CNN "Supplier"
+F 5 "732-5342-ND" H 2700 2200 60  0001 C CNN "Supplier Part Number"
+F 6 "1.047" H 2700 2200 60  0001 C CNN "Cost Each"
 	1    2700 2200
 	-1   0    0    1   
 $EndComp
@@ -237,6 +245,9 @@ F 0 "J2" H 2700 3700 50  0000 C CNN
 F 1 "Conn_01x09" H 3050 3100 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Angled_1x09_Pitch2.54mm" H 2700 3200 50  0001 C CNN
 F 3 "" H 2700 3200 50  0001 C CNN
+F 4 "Digikey" H 2700 3200 60  0001 C CNN "Supplier"
+F 5 "732-5342-ND" H 2700 3200 60  0001 C CNN "Supplier Part Number"
+F 6 "1.047" H 2700 3200 60  0001 C CNN "Cost Each"
 	1    2700 3200
 	-1   0    0    1   
 $EndComp
@@ -248,6 +259,9 @@ F 0 "R4" V 8080 4700 50  0000 C CNN
 F 1 "47k" V 8000 4700 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805" V 7930 4700 50  0001 C CNN
 F 3 "" H 8000 4700 50  0001 C CNN
+F 4 "Digikey" V 8000 4700 60  0001 C CNN "Supplier"
+F 5 "311-47.0KCRCT-ND" V 8000 4700 60  0001 C CNN "Supplier Part Number"
+F 6 "0.056" V 8000 4700 60  0001 C CNN "Cost Each"
 	1    8000 4700
 	1    0    0    -1  
 $EndComp
@@ -281,6 +295,9 @@ F 0 "D1" H 8000 4300 50  0000 C CNN
 F 1 "LED" H 8000 4100 50  0000 C CNN
 F 2 "LEDs:LED_0603" H 8000 4200 50  0001 C CNN
 F 3 "" H 8000 4200 50  0001 C CNN
+F 4 "Digikey" H 8000 4200 60  0001 C CNN "Supplier"
+F 5 "475-3118-1-ND" H 8000 4200 60  0001 C CNN "Supplier Part Number"
+F 6 "0.437" H 8000 4200 60  0001 C CNN "Cost Each"
 	1    8000 4200
 	0    -1   -1   0   
 $EndComp
@@ -376,11 +393,9 @@ Wire Wire Line
 Wire Wire Line
 	2900 2000 3200 2000
 Wire Wire Line
-	2900 2100 3450 2100
-Wire Wire Line
 	2900 2200 3200 2200
 Wire Wire Line
-	2900 2300 3200 2300
+	2900 2300 3450 2300
 Wire Wire Line
 	3200 2400 2900 2400
 Wire Wire Line
@@ -431,15 +446,17 @@ Wire Wire Line
 $Comp
 L GND #PWR05
 U 1 1 5B77D87A
-P 3450 2100
-F 0 "#PWR05" H 3450 1850 50  0001 C CNN
-F 1 "GND" H 3450 1950 50  0000 C CNN
-F 2 "" H 3450 2100 50  0001 C CNN
-F 3 "" H 3450 2100 50  0001 C CNN
-	1    3450 2100
+P 3450 2300
+F 0 "#PWR05" H 3450 2050 50  0001 C CNN
+F 1 "GND" H 3450 2150 50  0000 C CNN
+F 2 "" H 3450 2300 50  0001 C CNN
+F 3 "" H 3450 2300 50  0001 C CNN
+	1    3450 2300
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	6100 2850 6100 2800
 Connection ~ 6100 2800
+Wire Wire Line
+	3200 2100 2900 2100
 $EndSCHEMATC
