@@ -5,16 +5,60 @@ AS5600::AS5600()
 {
   //set up AS5600
   Wire.begin();
-  
-}
+//  Wire.beginTransmission(AS5600Address);
+//  Wire.write(MANGAddressMSB);
+//  Wire.write(0b00001111);
+//  Wire.write(MANGAddressLSB);
+//  Wire.write(0b11111111);
+//  Wire.write(BURNAddress);
+//  Wire.endTransmission();
 
-int AS5600::getPosition()
+}
+long AS5600::getPosition()
 {
   return getRegisters2(RAWANGLEAddressMSB, RAWANGLEAddressLSB);  
 }
 
-int AS5600::getRegisters2(byte registerMSB, byte registerLSB)
+int AS5600::getAngle()
 {
+  return getRegisters2(ANGLEAddressMSB, ANGLEAddressLSB);  
+}
+
+int AS5600::getStatus()
+{
+  return getRegister(STATUSAddress) & 0b00111000;
+}
+
+int AS5600::getGain()
+{
+  return getRegister(AGCAddress);
+}
+
+int AS5600::getMagnitude()
+{
+  return getRegisters2(MAGNITUDEAddressMSB, MAGNITUDEAddressLSB);
+}
+
+int AS5600::getRegister(byte register1)
+{
+  Wire.beginTransmission(AS5600Address);
+  Wire.write(register1);
+  Wire.endTransmission();
+
+  Wire.requestFrom(AS5600Address, 1);
+
+  if(Wire.available() <=1) {
+    msb = Wire.read();
+  }
+
+  return msb;
+}
+
+long AS5600::getRegisters2(byte registerMSB, byte registerLSB)
+{
+  lsb = 0;
+  msb = 0;
+  
   Wire.beginTransmission(AS5600Address);
   Wire.write(registerMSB);
   Wire.write(registerLSB);
@@ -27,6 +71,6 @@ int AS5600::getRegisters2(byte registerMSB, byte registerLSB)
     lsb = Wire.read();
   }
 
-  return lsb | (msb & msbMask) << 8;
+  return (long)((msb & msbMask) << 8);// | ((long)(msb & msbMask) << 8);
 }
 

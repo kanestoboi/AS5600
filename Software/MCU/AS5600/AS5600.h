@@ -14,7 +14,11 @@ class AS5600
 {
   public:
     AS5600();
-    int getPosition();
+    long getPosition();
+    int getAngle();
+    int getStatus();
+    int getGain();
+    int getMagnitude();
     void setZero();
     
     
@@ -44,7 +48,8 @@ class AS5600
       byte lsb;
       byte msbMask = 0b00001111;
 
-      int getRegisters2(byte registerMSB, byte registerLSB);
+      long getRegisters2(byte registerMSB, byte registerLSB);
+      int getRegister(byte register1);
 };
 
 #endif
