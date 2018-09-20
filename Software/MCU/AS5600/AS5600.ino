@@ -2,7 +2,8 @@
 
 AS5600 encoder;
 int encoderStatus;
-int output = 0;
+long output = 0;
+int encoderPos;
 
 void setup() {
   // put your setup code here, to run once:
@@ -21,11 +22,10 @@ void loop() {
     Serial.print("MD  ");
   else
     Serial.print("Error  ");
+  encoderPos = encoder.getPosition();
+  output = long(0.5335*(float)output + 0.4665*(float)encoderPos);
 
-  output = long(0.9896*(float)output + 0.01042*(float)encoder.getPosition());
+  //Serial.println(encoder.getPosition());
 
-  Serial.println(encoder.getPosition());
-
-  delay(200);
-
+  Serial.println(output);
 }

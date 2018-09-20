@@ -44,9 +44,9 @@ class AS5600
       byte MAGNITUDEAddressLSB = 0x1C;
       byte BURNAddress = 0xFF;
 
-      byte msb;
-      byte lsb;
-      byte msbMask = 0b00001111;
+      long msb;
+      long lsb;
+      long msbMask = 0b00001111;
 
       long getRegisters2(byte registerMSB, byte registerLSB);
       int getRegister(byte register1);
