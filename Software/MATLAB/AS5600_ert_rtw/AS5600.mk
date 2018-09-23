@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'AS5600'. 
 ## 
 ## Makefile     : AS5600.mk
-## Generated on : Thu Sep 20 22:48:10 2018
+## Generated on : Sat Sep 22 16:19:55 2018
 ##  version:  
 ## 
 ## Build Info:
@@ -233,7 +233,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/include -I$(START_DIR)/AS5600_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils -I$(MATLAB_ROOT)/toolbox/dsp/extern/src/export/include -I$(MATLAB_ROOT)/toolbox/dsp/extern/src/export/include/src -I$(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include -I$(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/comm_rt -I$(MATLAB_ROOT)/toolbox/shared/dsp/vision/matlab/include -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/standard -I$(ARDUINO_ROOT)/libraries/Servo/src -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/include -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/scheduler/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/include -IC:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src -IC:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/utility
+INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/include -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/svd/include -I$(START_DIR)/AS5600_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/standard -I$(ARDUINO_ROOT)/libraries/Servo/src -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/include -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/scheduler/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -IC:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/include -IC:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src -IC:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/utility
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -254,7 +254,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_OPTS) $
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/MW_arduinoI2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/MW_digitalio.cpp $(START_DIR)/AS5600_ert_rtw/AS5600.c $(START_DIR)/AS5600_ert_rtw/AS5600_data.c $(START_DIR)/AS5600_ert_rtw/rtGetInf.c $(START_DIR)/AS5600_ert_rtw/rtGetNaN.c $(START_DIR)/AS5600_ert_rtw/rt_nonfinite.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.S $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/hooks.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WInterrupts.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_analog.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_digital.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_shift.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/abi.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/CDC.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/IPAddress.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/new.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Print.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Stream.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Tone.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/USBCore.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WMath.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WString.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c C:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/Wire.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/utility/twi.c
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/MW_arduinoI2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/MW_digitalio.cpp $(START_DIR)/AS5600_ert_rtw/AS5600.c $(START_DIR)/AS5600_ert_rtw/AS5600_data.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.S $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/hooks.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WInterrupts.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_analog.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_digital.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_shift.c $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/abi.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/CDC.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/IPAddress.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/new.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Print.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Stream.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Tone.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/USBCore.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WMath.cpp $(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WString.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c C:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/Wire.cpp C:/ProgramData/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/arduino-1.8.1/hardware/arduino/avr/libraries/Wire/src/utility/twi.c
 
 MAIN_SRC = $(START_DIR)/AS5600_ert_rtw/ert_main.c
 
@@ -264,7 +264,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_arduinoI2C.o MW_digitalio.o AS5600.o AS5600_data.o rtGetInf.o rtGetNaN.o rt_nonfinite.o updown.o ext_work.o rtiostream_utils.o wiring_pulse.S.o hooks.o WInterrupts.o wiring.o wiring_analog.o wiring_digital.o wiring_pulse.o wiring_shift.o abi.o CDC.o HardwareSerial.o HardwareSerial0.o HardwareSerial1.o HardwareSerial2.o HardwareSerial3.o PluggableUSB.o IPAddress.o new.o Print.o Stream.o Tone.o USBCore.o WMath.o WString.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o rtiostream_interface.o ext_svr_daemon.o rtiostream_serial_daemon.o daemon_checksum.o Wire.o twi.o
+OBJS = MW_arduinoI2C.o MW_PWM.o MW_digitalio.o AS5600.o AS5600_data.o updown.o ext_work.o rtiostream_utils.o wiring_pulse.S.o hooks.o WInterrupts.o wiring.o wiring_analog.o wiring_digital.o wiring_pulse.o wiring_shift.o abi.o CDC.o HardwareSerial.o HardwareSerial0.o HardwareSerial1.o HardwareSerial2.o HardwareSerial3.o PluggableUSB.o IPAddress.o new.o Print.o Stream.o Tone.o USBCore.o WMath.o WString.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o rtiostream_interface.o ext_svr_daemon.o rtiostream_serial_daemon.o daemon_checksum.o Wire.o twi.o
 
 MAIN_OBJ = ert_main.o
 
@@ -452,54 +452,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 
 
 %.o : $(RELATIVE_PATH_TO_ANCHOR)/%.cpp
-	$(CPP) $(CPPFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/%.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/%.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/%.S
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/%.cpp
-	$(CPP) $(CPPFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/%.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/%.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/%.S
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/%.cpp
-	$(CPP) $(CPPFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/comm_rt/%.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/comm_rt/%.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.S.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/comm_rt/%.S
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.o : $(MATLAB_ROOT)/toolbox/comm/extern/comm_rt/export/include/comm_rt/%.cpp
 	$(CPP) $(CPPFLAGS) -o $@ $<
 
 
