@@ -158,7 +158,7 @@
       section.nData     = 1;
       section.data(1)  = dumData; %prealloc
       
-	  ;% hbuvrtjiegu.c5aqefslgi
+	  ;% hbuvrtjiegu.eom53jx3c1
 	  section.data(1).logicalSrcIdx = 5;
 	  section.data(1).dtTransOffset = 0;
 	
@@ -229,27 +229,27 @@
       dworkMap.sections(1) = section;
       clear section
       
-      section.nData     = 1;
-      section.data(1)  = dumData; %prealloc
+      section.nData     = 2;
+      section.data(2)  = dumData; %prealloc
       
-	  ;% nvhsae30oki.k5jjkevmo5
+	  ;% nvhsae30oki.ncm055d5k2
 	  section.data(1).logicalSrcIdx = 1;
 	  section.data(1).dtTransOffset = 0;
+	
+	  ;% nvhsae30oki.fswtqxqiuc
+	  section.data(2).logicalSrcIdx = 2;
+	  section.data(2).dtTransOffset = 1;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(2) = section;
       clear section
       
-      section.nData     = 2;
-      section.data(2)  = dumData; %prealloc
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
       
-	  ;% nvhsae30oki.ncm055d5k2
-	  section.data(1).logicalSrcIdx = 2;
+	  ;% nvhsae30oki.k5jjkevmo5
+	  section.data(1).logicalSrcIdx = 3;
 	  section.data(1).dtTransOffset = 0;
-	
-	  ;% nvhsae30oki.fswtqxqiuc
-	  section.data(2).logicalSrcIdx = 3;
-	  section.data(2).dtTransOffset = 1;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(3) = section;
@@ -292,15 +292,15 @@
 	  section.data(1).logicalSrcIdx = 8;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% nvhsae30oki.hym0nwvjcc
+	  ;% nvhsae30oki.nsitvsjt2y
 	  section.data(2).logicalSrcIdx = 9;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% nvhsae30oki.nsitvsjt2y
+	  ;% nvhsae30oki.pixrjtbfmr
 	  section.data(3).logicalSrcIdx = 10;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% nvhsae30oki.pixrjtbfmr
+	  ;% nvhsae30oki.hym0nwvjcc
 	  section.data(4).logicalSrcIdx = 11;
 	  section.data(4).dtTransOffset = 3;
 	
@@ -334,8 +334,8 @@
   ;%
 
 
-  targMap.checksum0 = 477552748;
-  targMap.checksum1 = 1186044592;
-  targMap.checksum2 = 2458006060;
-  targMap.checksum3 = 1855540990;
+  targMap.checksum0 = 36125018;
+  targMap.checksum1 = 1449243019;
+  targMap.checksum2 = 2252451737;
+  targMap.checksum3 = 3248737287;
 
