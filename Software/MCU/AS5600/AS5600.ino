@@ -6,7 +6,7 @@ long output = 0;
 int encoderPos;
 long setPoint = 2000;
 
-uint8_t stepPin = 3;
+uint8_t stepPin = 5;
 uint8_t dirPin = 4;
 
 long startI = millis();
@@ -18,7 +18,7 @@ void setup() {
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
   digitalWrite(dirPin, HIGH);
-  //analogWrite(stepPin, 200);
+  analogWrite(stepPin, 200);
 }
 
 void loop() {
@@ -34,26 +34,23 @@ void loop() {
     Serial.print("MD  ");
   else
     Serial.print("Error  ");
-  encoderPos = encoder.getPosition();
-  output = long(0.9332*(float)output + 0.06678*(float)encoderPos);
-
-  if (output < setPoint && abs(output - setPoint) > 50) {
+  
+  output = encoder.getPosition();
+  
+  
+  if (output < setPoint && abs(output - setPoint) > 5) {
     digitalWrite(dirPin, HIGH);
-    takeStep();
-    takeStep();
   }
-  else if (abs(output - setPoint) > 50) { 
+  else if (abs(output - setPoint) > 5) { 
     digitalWrite(dirPin, LOW);
-    takeStep();
-    takeStep();
   }
-  //Serial.println(encoder.getPosition());
+
+  if (abs(output - setPoint) < 20) {
+    analogWrite(stepPin, 0);
+  }
+  else {
+    analogWrite(stepPin, 200);
+  }
 
   Serial.println(output);
 }
-
-void takeStep() {
-  digitalWrite(stepPin, HIGH);
-  digitalWrite(stepPin, LOW); 
-}
-
