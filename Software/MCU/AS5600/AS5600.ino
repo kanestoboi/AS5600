@@ -8,6 +8,8 @@ long setPoint = 2000;
 
 uint8_t stepPin = 5;
 uint8_t dirPin = 4;
+uint8_t cfg1Pin = 2;
+uint8_t cfg2Pin = 3;
 
 long startI = millis();
 
@@ -17,6 +19,8 @@ void setup() {
 
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
+  pinMode(cfg1Pin, INPUT);
+  pinMode(cfg1Pin, INPUT);
   digitalWrite(dirPin, HIGH);
   analogWrite(stepPin, 200);
 }
