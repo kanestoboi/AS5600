@@ -1,0 +1,9 @@
+﻿@inproceedings{RN10,
+   author = {Chen, Chen and Youlong, Wang},
+   title = {Analysis of the impact of current ripple on the eddy current loss of axial-flux permanent magnet motor},
+   booktitle = {2014 IEEE Conference and Expo Transportation Electrification Asia-Pacific (ITEC Asia-Pacific)},
+   pages = {1-5},
+   DOI = {10.1109/ITEC-AP.2014.6940668},
+   type = {Conference Proceedings}
+}
+
