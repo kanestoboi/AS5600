@@ -4,10 +4,11 @@ AS5600 encoder;
 int encoderStatus;
 long output = 0;
 int encoderPos;
-long setPoint = 2000;
+long setPoint = 4000;
 
 uint8_t stepPin = 5;
 uint8_t dirPin = 4;
+uint8_t enPin = 6;
 uint8_t cfg1Pin = 2;
 uint8_t cfg2Pin = 3;
 
@@ -19,17 +20,46 @@ void setup() {
 
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
-  pinMode(cfg1Pin, INPUT);
-  pinMode(cfg1Pin, INPUT);
-  digitalWrite(dirPin, HIGH);
-  analogWrite(stepPin, 200);
+  pinMode(enPin, OUTPUT);
+  
+  setStealthChop();
+  analogWriteFrequency(stepPin, 2000);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   encoderStatus = encoder.getStatus();
 
+  //stepCheck();
+
+  printEncoderStatus();
   
+  
+  output = encoder.getPosition();
+  
+  
+  if (output < setPoint && abs(getError()) > 5) {
+    digitalWrite(dirPin, HIGH);
+  }
+  else if (abs(getError()) > 5) { 
+    digitalWrite(dirPin, LOW);
+  }
+
+  if (abs(getError()) < 2) {
+    analogWrite(stepPin, 0);
+    analogWrite(enPin,200);
+  }
+  else {
+    analogWrite(stepPin, 100);
+    digitalWrite(enPin, LOW);
+  }
+
+  setPWMFrequency();
+
+  Serial.println(output);
+}
+
+void printEncoderStatus() {
   if (encoderStatus == 0b00001000)
     Serial.print("MH  ");
   else if (encoderStatus == 0b00010000)
@@ -38,23 +68,47 @@ void loop() {
     Serial.print("MD  ");
   else
     Serial.print("Error  ");
-  
-  output = encoder.getPosition();
-  
-  
-  if (output < setPoint && abs(output - setPoint) > 5) {
-    digitalWrite(dirPin, HIGH);
-  }
-  else if (abs(output - setPoint) > 5) { 
-    digitalWrite(dirPin, LOW);
-  }
+}
 
-  if (abs(output - setPoint) < 20) {
-    analogWrite(stepPin, 0);
+void stepCheck() {
+  
+  for (int i = 0; i < 200; i++) {
+    output = encoder.getPosition();
+    Serial.println(output);
+  
+    delay(1000);
+    digitalWrite(stepPin, HIGH);
+    digitalWrite(stepPin, LOW);
   }
-  else {
-    analogWrite(stepPin, 200);
-  }
+  
+}
 
-  Serial.println(output);
+long getError() {
+  return output - setPoint;
+}
+
+void setPWMFrequency() {
+  long freq = 2000; //long((float)abs(getError()) * 2.0) + 300;
+  if ( freq > 100 )
+    analogWriteFrequency(stepPin, freq);
+  else
+    analogWriteFrequency(stepPin, 100);
+}
+
+void setStealthChop() {
+  pinMode(cfg1Pin, INPUT);
+  pinMode(cfg2Pin, INPUT);
+}
+
+void setSpreadCycle() {
+  pinMode(cfg1Pin, OUTPUT);
+  pinMode(cfg2Pin, INPUT);
+  digitalWrite(cfg1Pin, LOW);
+}
+
+void setMicroStepA4988() {
+  pinMode(cfg1Pin, OUTPUT);
+  pinMode(cfg2Pin, OUTPUT);
+  digitalWrite(cfg1Pin, HIGH);
+  digitalWrite(cfg2Pin, HIGH);
 }

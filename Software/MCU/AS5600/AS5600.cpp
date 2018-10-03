@@ -5,13 +5,6 @@ AS5600::AS5600()
 {
   //set up AS5600
   Wire.begin();
-//  Wire.beginTransmission(AS5600Address);
-//  Wire.write(MANGAddressMSB);
-//  Wire.write(0b00001111);
-//  Wire.write(MANGAddressLSB);
-//  Wire.write(0b11111111);
-//  Wire.write(BURNAddress);
-//  Wire.endTransmission();
 
 }
 long AS5600::getPosition()
@@ -74,4 +67,3 @@ long AS5600::getRegisters2(byte registerMSB, byte registerLSB)
 
   return (lsb) + (msb & msbMask) * 256;
 }
-
