@@ -23,6 +23,7 @@ void setup() {
   pinMode(enPin, OUTPUT);
   
   setStealthChop();
+  setSpreadCycle();
   analogWriteFrequency(stepPin, 2000);
 }
 
@@ -47,7 +48,7 @@ void loop() {
 
   if (abs(getError()) < 2) {
     analogWrite(stepPin, 0);
-    analogWrite(enPin,200);
+   // analogWrite(enPin,200);
   }
   else {
     analogWrite(stepPin, 100);
