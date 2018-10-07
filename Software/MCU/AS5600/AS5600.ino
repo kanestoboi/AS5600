@@ -1,8 +1,14 @@
 #include "AS5600.h"
 
 AS5600 encoder;
+IntervalTimer AS5600Timer;
+
 int encoderStatus;
 long output = 0;
+long lastOutput = 0;
+long velocity = 0;
+
+
 int encoderPos;
 long setPoint = 4000;
 
@@ -25,6 +31,7 @@ void setup() {
   setStealthChop();
   setSpreadCycle();
   analogWriteFrequency(stepPin, 2000);
+  AS5600Timer.begin(readAS5600, 15000);
 }
 
 void loop() {
@@ -36,7 +43,7 @@ void loop() {
   printEncoderStatus();
   
   
-  output = encoder.getPosition();
+  
   
   
   if (output < setPoint && abs(getError()) > 5) {
@@ -58,6 +65,14 @@ void loop() {
   setPWMFrequency();
 
   Serial.println(output);
+}
+
+void readAS5600() {
+  output = encoder.getPosition();
+
+  velocity = long((float)(output - lastOutput)/0.015);
+  
+  lastOutput = output;
 }
 
 void printEncoderStatus() {
