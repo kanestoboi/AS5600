@@ -54,15 +54,23 @@ long AS5600::getRegisters2(byte registerMSB, byte registerLSB)
   
   Wire.beginTransmission(AS5600Address);
   Wire.write(registerMSB);
-  Wire.write(registerLSB);
   Wire.endTransmission();
   delay(10);
 
-  Wire.requestFrom(AS5600Address, 2);
+  Wire.requestFrom(AS5600Address, 1);
 
-  if(Wire.available() <=2) {
-    lsb = Wire.read();
+  if(Wire.available() <=1) {
     msb = Wire.read();
+  }
+
+  Wire.requestFrom(AS5600Address, 1);
+
+  Wire.beginTransmission(AS5600Address);
+  Wire.write(registerLSB);
+  Wire.endTransmission();
+
+  if(Wire.available() <=1) {
+    lsb = Wire.read();
   }
 
   return (lsb) + (msb & msbMask) * 256;
