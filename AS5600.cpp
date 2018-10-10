@@ -9,69 +9,69 @@ AS5600::AS5600()
 }
 long AS5600::getPosition()
 {
-  return getRegisters2(RAWANGLEAddressMSB, RAWANGLEAddressLSB);  
+  return _getRegisters2(_RAWANGLEAddressMSB, _RAWANGLEAddressLSB);  
 }
 
 int AS5600::getAngle()
 {
-  return getRegisters2(ANGLEAddressMSB, ANGLEAddressLSB);  
+  return _getRegisters2(_ANGLEAddressMSB, _ANGLEAddressLSB);  
 }
 
 int AS5600::getStatus()
 {
-  return getRegister(STATUSAddress) & 0b00111000;
+  return _getRegister(_STATUSAddress) & 0b00111000;
 }
 
 int AS5600::getGain()
 {
-  return getRegister(AGCAddress);
+  return _getRegister(_AGCAddress);
 }
 
 int AS5600::getMagnitude()
 {
-  return getRegisters2(MAGNITUDEAddressMSB, MAGNITUDEAddressLSB);
+  return _getRegisters2(_MAGNITUDEAddressMSB, _MAGNITUDEAddressLSB);
 }
 
-int AS5600::getRegister(byte register1)
+int AS5600::_getRegister(byte register1)
 {
-  Wire.beginTransmission(AS5600Address);
+  Wire.beginTransmission(_AS5600Address);
   Wire.write(register1);
   Wire.endTransmission();
 
-  Wire.requestFrom(AS5600Address, 1);
+  Wire.requestFrom(_AS5600Address, 1);
 
   if(Wire.available() <=1) {
-    msb = Wire.read();
+    _msb = Wire.read();
   }
 
-  return msb;
+  return _msb;
 }
 
-long AS5600::getRegisters2(byte registerMSB, byte registerLSB)
+long AS5600::_getRegisters2(byte registerMSB, byte registerLSB)
 {
-  lsb = 0;
-  msb = 0;
+  _lsb = 0;
+  _msb = 0;
   
-  Wire.beginTransmission(AS5600Address);
+  Wire.beginTransmission(_AS5600Address);
   Wire.write(registerMSB);
   Wire.endTransmission();
   delay(10);
 
-  Wire.requestFrom(AS5600Address, 1);
+  Wire.requestFrom(_AS5600Address, 1);
 
   if(Wire.available() <=1) {
-    msb = Wire.read();
+    _msb = Wire.read();
   }
 
-  Wire.requestFrom(AS5600Address, 1);
+  Wire.requestFrom(_AS5600Address, 1);
 
-  Wire.beginTransmission(AS5600Address);
+  Wire.beginTransmission(_AS5600Address);
   Wire.write(registerLSB);
   Wire.endTransmission();
 
   if(Wire.available() <=1) {
-    lsb = Wire.read();
+    _lsb = Wire.read();
   }
 
-  return (lsb) + (msb & msbMask) * 256;
+  return (_lsb) + (_msb & _msbMask) * 256;
 }
