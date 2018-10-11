@@ -1,12 +1,17 @@
-#include "AS5600.h"
+#include <AS5600.h>
 
 AS5600 encoder;
-IntervalTimer AS5600Timer;
 
 int encoderStatus;
-long output = 0;
-long lastOutput = 0;
-long velocity = 0;
+long output;
+long lastOutput = encoder.getPosition();
+float velocity = 0;
+long revolutions = 0;
+long position = 0;
+long deltaPos;
+long lastPosition = 0;
+long lastMicros = micros();
+long PWMFreq = 0;
 
 
 int encoderPos;
@@ -27,11 +32,16 @@ void setup() {
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
   pinMode(enPin, OUTPUT);
+
+  
   
   setStealthChop();
-  setSpreadCycle();
+  //setSpreadCycle();
+  //setSpreadCycleFull();
+  //setStealthChopQuarter();
+  //delay(10000);
   analogWriteFrequency(stepPin, 2000);
-  AS5600Timer.begin(readAS5600, 15000);
+  analogWrite(stepPin, 100);
 }
 
 void loop() {
@@ -40,40 +50,62 @@ void loop() {
 
   //stepCheck();
 
-  printEncoderStatus();
+  //printEncoderStatus();
   
+  output = encoder.getPosition();
+  if ((lastOutput - output) > 2047 )
+    revolutions++;
+  if ((lastOutput - output) < -2047 )
+    revolutions--;
+
   
-  
-  
-  
-  if (output < setPoint && abs(getError()) > 5) {
+
+  position = revolutions * 4096 + output;
+  deltaPos = position-lastPosition;
+  lastPosition = position;
+
+  /*
+  if (position < setPoint && abs(getError()) > 5) {
     digitalWrite(dirPin, HIGH);
   }
   else if (abs(getError()) > 5) { 
-    digitalWrite(dirPin, LOW);
+    digitalWrite(dirPin, HIGH);
   }
 
   if (abs(getError()) < 2) {
-    analogWrite(stepPin, 0);
+    //analogWrite(stepPin, 0);
    // analogWrite(enPin,200);
   }
   else {
     analogWrite(stepPin, 100);
-    digitalWrite(enPin, LOW);
   }
+  */
 
-  setPWMFrequency();
+  //setPWMFrequency();
 
-  Serial.println(output);
-}
+  digitalWrite(dirPin, HIGH);
+  velocity = (((float)abs(deltaPos)/(float(11000/*micros() - lastMicros*/)/1000000.0) * 360.0/4096.0));
+  lastMicros = micros();
 
-void readAS5600() {
-  output = encoder.getPosition();
+  
+  if ((228-velocity) > 100){
+    //analogWriteFrequency(stepPin, 125);
+    //setSpreadCycleFull();
+    //setStealthChopQuarter();
+  }
+  else{
+   //analogWriteFrequency(stepPin, 2000);
+   //setStealthChop();
+  }
+  
+  
+  
+  Serial.println(velocity);
 
-  velocity = long((float)(output - lastOutput)/0.015);
   
   lastOutput = output;
 }
+
 
 void printEncoderStatus() {
   if (encoderStatus == 0b00001000)
@@ -100,13 +132,13 @@ void stepCheck() {
 }
 
 long getError() {
-  return output - setPoint;
+  return position - setPoint;
 }
 
 void setPWMFrequency() {
-  long freq = 2000; //long((float)abs(getError()) * 2.0) + 300;
-  if ( freq > 100 )
-    analogWriteFrequency(stepPin, freq);
+  PWMFreq = long((float)abs(getError()) ) + 200;
+  if ( PWMFreq > 100 )
+    analogWriteFrequency(stepPin, PWMFreq);
   else
     analogWriteFrequency(stepPin, 100);
 }
@@ -116,10 +148,23 @@ void setStealthChop() {
   pinMode(cfg2Pin, INPUT);
 }
 
+void setStealthChopQuarter() {
+  pinMode(cfg1Pin, OUTPUT);
+  pinMode(cfg2Pin, INPUT);
+  digitalWrite(cfg1Pin, HIGH);
+}
+
 void setSpreadCycle() {
   pinMode(cfg1Pin, OUTPUT);
   pinMode(cfg2Pin, INPUT);
   digitalWrite(cfg1Pin, LOW);
+}
+
+void setSpreadCycleFull() {
+  pinMode(cfg1Pin, OUTPUT);
+  pinMode(cfg2Pin, OUTPUT);
+  digitalWrite(cfg1Pin, LOW);
+  digitalWrite(cfg2Pin, LOW);
 }
 
 void setMicroStepA4988() {
