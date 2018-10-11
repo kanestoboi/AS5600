@@ -36,7 +36,7 @@ void setup() {
   
   
   setStealthChop();
-  //setSpreadCycle();
+  setSpreadCycle();
   //setSpreadCycleFull();
   //setStealthChopQuarter();
   //delay(10000);
@@ -100,7 +100,7 @@ void loop() {
   
   
   
-  Serial.println(velocity);
+  Serial.println(position);
 
   
   lastOutput = output;
