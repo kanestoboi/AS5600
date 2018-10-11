@@ -1,8 +1,0 @@
-var js = document.createElement('script'); 
-js.async = true; 
-js.src = "//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"; 
-parent.document.body.appendChild(js); 
- 
-var js1 = document.createElement('script'); 
-js1.async = true; 
-js1.src = "//widgets.ebscohost.com/prod/simplekey/mathjax/edslatex.js"; parent.document.body.appendChild(js1); 

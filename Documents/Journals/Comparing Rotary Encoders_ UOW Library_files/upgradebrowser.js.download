@@ -1,1 +1,0 @@
-﻿(function(a){function b(){var d=a("[data-mobilesitelink='true']");if(d.length>0){d.bind("click",function(e){c(e);});}}function c(d){if(a.browser.msie&&parseInt(a.browser.version,10)<8){a(d.target).epmodal({url:"UpgradeBrowser/MobileSite",data:{theUrl:d.currentTarget.href}});d.preventDefault();}}a(b);})(jQuery);
