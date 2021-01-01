@@ -14,17 +14,25 @@ class AS5600
 {
   public:
     AS5600();
-    long getPosition();
-    int getAngle();
-    int getStatus();
-    int getGain();
-    int getMagnitude();
+    uint16_t getPosition();
+
+    uint16_t getAngle();
+    uint16_t getRawAngle();
+    float getScaledAngle();
+
+    uint8_t getStatus();
+    uint8_t getGain();
+    uint8_t getMagnet();
+    uint16_t getMagnitude();
     void setZero();
-    
-    
-    private: 
+
+    bool isMagnetTooStrong();
+    bool isMagnetTooWeak();
+    bool isMagnetDetected();
+
+    private:
       int _AS5600Address = 0x36;
-      
+
       byte _ZMCOAddress = 0x00;
       byte _ZPOSAddressMSB = 0x01;
       byte _ZPOSAddressLSB = 0x02;
@@ -44,12 +52,8 @@ class AS5600
       byte _MAGNITUDEAddressLSB = 0x1C;
       byte _BURNAddress = 0xFF;
 
-      long _msb;
-      long _lsb;
-      long _msbMask = 0b00001111;
-
-      long _getRegisters2(byte registerMSB, byte registerLSB);
-      int _getRegister(byte register1);
+      uint16_t _getRegisters2(byte registerMSB, byte registerLSB);
+      uint8_t _getRegister(byte register1);
 };
 
 #endif
