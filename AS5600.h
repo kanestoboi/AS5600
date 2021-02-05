@@ -2,6 +2,7 @@
   AS5600.h - Library for interacting with the AS5600.
   Created by Kane C. Stoboi, 22 August, 2018.
   Released into the public domain.
+  https://github.com/kanestoboi/AS5600
 */
 
 #ifndef AS5600_h
@@ -24,7 +25,7 @@ class AS5600
     uint8_t getGain();
     uint8_t getMagnet();
     uint16_t getMagnitude();
-    void setZero();
+    void setZero(); // still to be implemented
 
     bool isMagnetTooStrong();
     bool isMagnetTooWeak();
