@@ -10,7 +10,7 @@ Features
 
 ## Example 
 The following example reads the angle (0-360) of the magnet relative to the AS5600 encoder in increments of 360/4095
-```arduino
+```c
 #include <AS5600.h>
 
 AS5600 encoder;
