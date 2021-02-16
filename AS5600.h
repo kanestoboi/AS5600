@@ -15,8 +15,39 @@ class AS5600
 {
   public:
     AS5600();
-    uint16_t getPosition();
 
+    enum {
+      POWER_MODE_NORM = 0,
+      POWER_MODE_LPM1 = 1,
+      POWER_MODE_LPM2 = 2,
+      POWER_MODE_LPM3 = 3,
+
+      HYSTERESIS_OFF = 0,
+      HYSTERESIS_1LSB = 1,
+      HYSTERESIS_2LSB = 2,
+      HYSTERESIS_3LSB = 3,
+
+      OUTPUT_STAGE_ANALOG_FULL = 0,
+      OUTPUT_STAGE_ANALOG_REDUCED = 1,
+      OUTPUT_STAGE_DIGITAL_PWM = 2,
+
+      SLOW_FILTER_16X = 0,
+      SLOW_FILTER_8X = 1,
+      SLOW_FILTER_4X = 2,
+      SLOW_FILTER_2X = 3,
+
+      FAST_FILTER_THRESHOLD_SLOW = 0,
+      FAST_FILTER_THRESHOLD_6LSB = 1,
+      FAST_FILTER_THRESHOLD_7LSB = 2,
+      FAST_FILTER_THRESHOLD_9LSB = 3,
+      FAST_FILTER_THRESHOLD_18LSB = 4,
+      FAST_FILTER_THRESHOLD_21LSB = 5,
+      FAST_FILTER_THRESHOLD_24LSB = 6,
+      FAST_FILTER_THRESHOLD_10LSB = 7,
+
+    };
+
+    uint16_t getPosition();
     uint16_t getAngle();
     uint16_t getRawAngle();
     float getScaledAngle();
@@ -31,8 +62,20 @@ class AS5600
     bool isMagnetTooWeak();
     bool isMagnetDetected();
 
+    bool setPowerMode(uint8_t powerMode);
+    bool setHysteresis(uint8_t hysteresis);
+    bool setOutputStage(uint8_t outputStage);
+    bool setPWMFrequency(uint8_t frequency);
+    bool setSlowFilter(uint8_t slowFilter);
+    bool setFastFilterThreshold(uint8_t fastFilterThreshold);
+
+
+    uint8_t getCONF();
+
+    
+
     private:
-      int _AS5600Address = 0x36;
+      int _AS5600Address = 0x36; // I2C address for AS5600
 
       byte _ZMCOAddress = 0x00;
       byte _ZPOSAddressMSB = 0x01;
@@ -55,6 +98,8 @@ class AS5600
 
       uint16_t _getRegisters2(byte registerMSB, byte registerLSB);
       uint8_t _getRegister(byte register1);
+
+      void _writeRegister(byte registerAddress, byte value);
 };
 
 #endif
