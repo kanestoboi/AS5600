@@ -67,7 +67,7 @@ uint8_t AS5600::getStatus() {
 bool AS5600::isMagnetTooStrong() {
   uint8_t _b=0;
   _b = getStatus();
-  if (_b & (1<<5)) { return true; }
+  if (_b & (1<<3)) { return true; }
   return false;
 }
 
@@ -91,7 +91,7 @@ bool AS5600::isMagnetTooWeak() {
 bool AS5600::isMagnetDetected() {
   uint8_t _b=0;
   _b = getStatus();
-  if (_b & (1<<3)) { return true; }
+  if (_b & (1<<5)) { return true; }
   return false;
 }
 
